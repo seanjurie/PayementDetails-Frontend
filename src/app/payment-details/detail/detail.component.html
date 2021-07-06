@@ -1,0 +1,59 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="PMId" [value]="service.formData.PMId">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend" style="border-radius: 0;">
+                <div class="input-group-text bg-white" style="border-radius: 0;">
+                    <i style="padding: 7px;" class="fas fa-user-circle"
+                       [class.green-icon]="CardOwnerName.valid" [class.red-icon]="CardOwnerName.invalid && CardOwnerName.touched"></i>
+                </div>
+            </div>
+            <input name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName"  class="form-control"
+                   [class.is-invalid]="CardOwnerName.invalid && CardOwnerName.touched" placeholder="Card Owner Name" style="border-radius: 0;" required>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top: 10px;">
+        <div class="input-group">
+            <div class="input-group-prepend" style="border-radius: 0;">
+                <div class="input-group-text bg-white" style="border-radius: 0;">
+                    <i style="padding: 6px;" class="fas fa-credit-card"
+                       [class.green-icon]="CardNumber.valid" [class.red-icon]="CardNumber.invalid && CardNumber.touched"></i>
+                </div>
+            </div>
+            <input name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber" class="form-control"
+                   [class.is-invalid]="CardNumber.invalid && CardNumber.touched" placeholder="16 Digit Card Number" style="border-radius: 0;" required maxlenght="16" minlength="16">
+        </div>
+    </div>
+<div class="form-row">
+    <div class="form-group col-md-7" style="margin-top: 10px;">
+        <div class="input-group">
+            <div class="input-group-prepend" style="border-radius: 0;">
+                <div class="input-group-text bg-white" style="border-radius: 0;">
+                    <i style="padding: 8px;" class="fas fa-calendar-alt"
+                       [class.green-icon]="ExpirationDate.valid" [class.red-icon]="ExpirationDate.invalid && ExpirationDate.touched"></i>
+                </div>
+            </div>
+            <input name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate" class="form-control"
+                   [class.is-invalid]="ExpirationDate.invalid && ExpirationDate.touched" placeholder="MM/YY" style="border-radius: 0;" required maxlenght="5" minlength="5">
+        </div>
+    </div>
+    <div class="form-group col-md-7" style="margin-top: 10px;">
+        <div class="input-group">
+            <div class="input-group-prepend" style="border-radius: 0;">
+                <div class="input-group-text bg-white" style="border-radius: 0;">
+                    <i style="padding: 7px;" class="fas fa-key"
+                    [class.green-icon]="CVV.valid" [class.red-icon]="CVV.invalid && CVV.touched"></i>
+                </div>
+            </div>
+            <input name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" class="form-control"
+                   [class.is-invalid]="CVV.invalid && CVV.touched" placeholder="CVV" style="border-radius: 0;" required maxlenght="3" minlength="3">
+        </div>
+    </div>
+</div> 
+    <div class="form-group">
+        <button class="btn btn-success bt-lg btn-block" style="margin-top: 12px;" type="submit" [disabled]="form.invalid">
+            <i style="padding: 7px;" class="fas fa-database"></i>
+                Submit
+        </button>
+    </div>
+</form>
